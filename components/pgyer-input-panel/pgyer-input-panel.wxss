@@ -1,0 +1,75 @@
+/* component/pgyer-input-panel.wxss */
+
+.weui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex
+}
+
+.weui-flex__item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1
+}
+.pgyer-cell {
+  height: 94rpx;
+  border-width: 1rpx;
+  border-style: solid;
+  border-color: #babdc6;
+  border-radius: 10rpx;
+  display: flex;
+  align-items:center;
+  /* padding-left: 32rpx;
+  padding-right: 32rpx; */
+  font-size: 18px;
+  text-align: center;
+  margin: 16rpx 0 8rpx 0;
+}
+
+.pgyer-input-picker{
+  padding-left: 32rpx;
+  padding-right: 48rpx;
+  display:block;
+  vertical-align:middle;
+  border-right: 1rpx #babdc6 solid;
+  font-size: 16px;
+}
+.picker-icon{
+  height: 8rpx;
+  width: 16rpx;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: -48rpx;
+}
+.pgyer-input-label{
+  font-size: 14px;
+  color: #16b99a;
+  text-align: right;
+  margin-right: 32rpx;
+}
+.pgyer-input-label-disabled{
+  font-size: 14px;
+  color: #babdc6;
+  text-align: right;
+  margin-right: 32rpx;
+
+}
+.pgyer-input{
+  text-align:left;
+  padding-left: 32rpx;
+  /* padding-right: 32rpx; */
+  height: 94rpx;
+  font-size: 16px;
+}
+.pgyer_clear_icon{
+  display: block;
+  width: 20rpx;
+  height: 20rpx;
+  padding-left: 10rpx;
+  margin-right: 32rpx;
+}
+.error{
+  color: #e64304;
+  /* margin: 8rpx 0 16rpx 0; */
+  font-size: 12px
+}

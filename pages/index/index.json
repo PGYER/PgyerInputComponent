@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "test",
+  "usingComponents": {
+    "pgyer-input-panel": "/components/pgyer-input-panel/pgyer-input-panel"
+  }
+}
