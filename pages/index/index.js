@@ -9,17 +9,29 @@ Page({
     verificationCode: "",
     password: ""
   },
-  isEmailOrTel: function(e) {
+  inputEmailOrTel: function(e) {
     console.log("this is emial or tel", e.detail.pgyerResult);
+    this.setData({
+      email : e.detail.pgyerResult.value
+    })
   },
-  isPhone: function(e) {
+  inputPhone: function(e) {
     console.log("this is phone", e.detail.pgyerResult);
+    this.setData({
+      tel : e.detail.pgyerResult.value
+    })
   },
-  isVerificationCode: function(e) {
+  inputVerificationCode: function(e) {
     console.log("this is verification code", e.detail.pgyerResult);
+    this.setData({
+      verificationCode : e.detail.pgyerResult.value
+    })
   },
-  isPassword: function(e) {
+  inputPassword: function(e) {
     console.log("this is password", e.detail.pgyerResult);
+    this.setData({
+      password : e.detail.pgyerResult.value
+    })
   },
   confirm: function(e) {
     console.log("click confirm button ", e);

@@ -79,7 +79,7 @@ Component({
     this.initDefaultType();
     this.initView();
   },
-  
+
   methods: {
     /*** init ***/
     initView: function() {
@@ -131,7 +131,7 @@ Component({
     /*** comonent inner eventHandle function ***/
     valueInput: function(e) {
       this.setValue(e.detail.value);
-      this.valueInputListener();
+      this.valueInputListener(e);
     },
     clearValue: function() {
       this.setValue('');
@@ -211,9 +211,12 @@ Component({
     confirm: function(e) {
       this.listener('confirm', e);
     },
-    valueInputListener: function() {
+    valueInputListener: function(e) {
       let isLegal = this.verifyValue();
-      this.listener("verify_event", isLegal);
+      let data = {};
+      data.value = e.detail.value;
+      data.isLegal =isLegal;
+      this.listener("input_verify", data);
     },
     tapCountryCodeListener: function() {
       this.listener('country_code', '');
