@@ -1,4 +1,7 @@
+<img src="https://img.shields.io/badge/release-v1.0.0-brightgreen.svg" style="float:left;width:94px;height20px">
+
 #### 项目介绍：
+
 这是一个多功能输入框组件，该组件是从『蒲公英小程序』登录页面中抽取出来。<br>
 初衷是为了解决输入框功能的复用以及保证代码整洁。
 
@@ -33,15 +36,15 @@
 
 二、通用属性说明列表：
 
-| 属性名             | 类型          | 默认值                 | 说明                                       |
-| --------------- | ----------- | ------------------- | ---------------------------------------- |
-| value           | String      |                     | 输入框中的内容                                  |
-| type            | String      | "telOrEmail"        | 表示输入框类型的，目前有四个类型（"tel","password","verificationCode",telOrEmail） |
-| placeholder     | String      | 默认根据不同的type 显示不同的提示 | placeholder : 显示自定义值<br><br>placeholder 无自定义值通过类型分别显示默认值<br>tel ： 请输入电话号码 <br>telOrEmail : 请输入电话号码或者邮箱<br>verificationCode : 请输入验证码<br>password : 请输入密码 |
-| reminder        | String      | 默认根据不同的type 显示不同的提示 | reminder : 显示自定义值<br><br>reminder 无自定义值通过类型分别显示默认值<br>tel ： 输入的手机号码有误 <br>telOrEmail : 输入的邮箱或者手机号码有误<br>verificationCode : 输入的验证码有误<br>password : 输入的密码有误 |
-| confirm_type    | String      | "done"              | send : 右下角按钮为“发送”<br> search : 右下角按钮为“搜索”<br>next : 右下角按钮为“下一个”<br>go : 右下角按钮为“前往”<br>done  右下角按钮为“完成” |
-| bindverifyevent | EventHandle |                     | 每次输入，根据 type 类型返回验证结果触发<br>event.detail.pgyerResult = "true"/"false" ： 返回 true (合法) / false (不合法) |
-| bindconfirm     | EventHandle |                     | 点击完成按钮时触发，event.detail = {value: value}  |
+| 属性名              | 类型          | 默认值                 | 说明                                       |
+| ---------------- | ----------- | ------------------- | ---------------------------------------- |
+| value            | String      |                     | 输入框中的内容                                  |
+| type             | String      | "telOrEmail"        | 表示输入框类型的，目前有四个类型（"tel","password","verificationCode",telOrEmail） |
+| placeholder      | String      | 默认根据不同的type 显示不同的提示 | placeholder : 显示自定义值<br><br>placeholder 无自定义值通过类型分别显示默认值<br>tel ： 请输入电话号码 <br>telOrEmail : 请输入电话号码或者邮箱<br>verificationCode : 请输入验证码<br>password : 请输入密码 |
+| reminder         | String      | 默认根据不同的type 显示不同的提示 | reminder : 显示自定义值<br><br>reminder 无自定义值通过类型分别显示默认值<br>tel ： 输入的手机号码有误 <br>telOrEmail : 输入的邮箱或者手机号码有误<br>verificationCode : 输入的验证码有误<br>password : 输入的密码有误 |
+| confirm_type     | String      | "done"              | send : 右下角按钮为“发送”<br> search : 右下角按钮为“搜索”<br>next : 右下角按钮为“下一个”<br>go : 右下角按钮为“前往”<br>done  右下角按钮为“完成” |
+| bindinput_verify | EventHandle |                     | 每次输入，根据 type 类型返回结果触发<br>event.detail.pgyerResult ={value: "s", isLegal: false}<br> value : 输入框内容<br>isLegal : 验证输入是否合法 |
+| bindconfirm      | EventHandle |                     | 点击完成按钮时触发，event.detail = {value: value}  |
 
 **type = "tel" 特定属性**
 
