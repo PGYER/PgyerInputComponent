@@ -21,7 +21,7 @@
     <image class="pgyer_clear_icon " src="../../image/clear.png"/>
   </view>
   <block wx:if="{{type == 'verificationCode'}}">
-    <view class="{{active? 'pgyer-input-label' : 'pgyer-input-label-disabled'}}" bindtap="tapVerificationLabel">{{validation_label}}</view>
+    <view class="{{active=='true'? 'pgyer-input-label' : 'pgyer-input-label-disabled'}}" bindtap="tapVerificationLabel">{{validation_label}}</view>
   </block>
 </view>
 <view class="error" wx:if="{{value.length >0}}">{{reminder}}</view>
