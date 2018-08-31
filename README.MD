@@ -43,14 +43,14 @@
 | bindverifyevent | EventHandle |                     | 每次输入，根据 type 类型返回验证结果触发<br>event.detail.pgyerResult = "true"/"false" ： 返回 true (合法) / false (不合法) |
 | bindconfirm     | EventHandle |                     | 点击完成按钮时触发，event.detail = {value: value}  |
 
-type = "tel" 特定属性
+**type = "tel" 特定属性**
 
 | 属性名              | 类型          | 默认值  | 说明                |
 | ---------------- | ----------- | ---- | ----------------- |
 | country_code     | String      | 86   | 国家码               |
 | bindcountry_code | EventHandle |      | 点击countrycode触发事件 |
 
-type = "verificationCode" 特定属性
+**type = "verificationCode" 特定属性**
 
 | 属性名                    | 类型          | 默认值     | 说明                                       |
 | ---------------------- | ----------- | ------- | ---------------------------------------- |
