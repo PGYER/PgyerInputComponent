@@ -35,7 +35,6 @@ Component({
         active: {
             type: Boolean,
             value: '',
-
         },
         countdown: {
             type: String,
@@ -93,24 +92,20 @@ Component({
                     break;
             }
         },
-        contentInput: function (e) {
-            this.setContent(e.detail.value);
-            let isLegal = this.verifyContent();
+        valueInput: function (e) {
+            this.setValue(e.detail.value);
+            let isLegal = this.verifyValue();
             this.listener("verifyevent", isLegal);
         },
-        setContent: function (str) {
+        setValue: function (str) {
             this.setData({
                 value: str
             });
         },
-        clearContent: function () {
-            this.setContent('');
+        clearValue: function () {
+            this.setValue('');
         },
-        showErrorContent: function () {
-            let isHide = this.verifyContent();
-            this.refreshErrorReminder(isHide);
-        },
-        verifyContent: function () {
+        verifyValue: function () {
             if (this.data.type == TYPE_TEL) {
                 return this.data.types[this.data.type].verifyFuc(this.data.value, this.data.countrycode);
             } else {
@@ -137,7 +132,8 @@ Component({
             eventDetail.pgyerResult = result;
             this.triggerEvent(str, eventDetail, eventOption);
         },
-        refreshErrorReminder: function (isHide) {
+        refreshErrorReminder: function () {
+            let isHide = this.verifyValue();
             if (isHide) {
                 this.setData({
                     errorReminder: ''
