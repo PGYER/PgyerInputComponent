@@ -22,30 +22,37 @@ Component({
             type: String,
             value: ''
         },
+        reminder: {
+            type: String,
+            value: ''
+        },
         /*** tel properties ***/
-        countrycode: {
+        country_code: {
             type: String,
             value: '',
         },
         /*** get phone verification properties ***/
-        validationlabel: {
+        validation_label: {
             type: String,
             value: '',
         },
         active: {
             type: Boolean,
-            value: '',
+            value: 'false',
         },
-        countdown: {
+        count_down: {
             type: String,
             value: CONST.DATA.DEAFULT_COUNT_DOWN_NUM
+        },
+        confirm_type: {
+            type: String,
+            value: 'done',
         }
     },
     /**
      * 组件的初始数据
      */
     data: {
-        errorReminder: '',
         timer: {},
         types: {
             'tel': {
@@ -68,7 +75,7 @@ Component({
                 'errorMessage': '输入的密码有误',
                 'verifyFuc': verifyUtils.verifyPassword
             }
-        }
+        },
     },
 
     ready: function () {
@@ -78,7 +85,7 @@ Component({
      * 组件的方法列表
      */
     methods: {
-        /*** common feature ***/
+        /*** init ***/
         initView: function () {
             this.initDefaultType();
             this.initDefaultPlaceHolder();
@@ -88,34 +95,14 @@ Component({
                     this.initDefaultCountryCode();
                     break;
                 case TYPE_PHONE_VALIFICATION:
-                    this.initDefalutPhoneVerificationLabel();
+                    this.initDefalutVerificationCodeLabel();
                     break;
             }
         },
-        valueInput: function (e) {
-            this.setValue(e.detail.value);
-            let isLegal = this.verifyValue();
-            this.listener("verifyevent", isLegal);
-        },
-        setValue: function (str) {
-            this.setData({
-                value: str
-            });
-        },
-        clearValue: function () {
-            this.setValue('');
-        },
-        verifyValue: function () {
-            if (this.data.type == TYPE_TEL) {
-                return this.data.types[this.data.type].verifyFuc(this.data.value, this.data.countrycode);
-            } else {
-                return this.data.types[this.data.type].verifyFuc(this.data.value);
-            }
-        },
-        initDefaultType : function(){
-            if(this.data.type===''){
+        initDefaultType: function () {
+            if (this.data.type === '') {
                 this.setData({
-                    type : TYPE_TEL_OR_EMAIL
+                    type: TYPE_TEL_OR_EMAIL
                 });
             }
         },
@@ -126,61 +113,87 @@ Component({
                 })
             }
         },
+        /*** init country Code ***/
+        initDefaultCountryCode: function () {
+            if (this.data.country_code == '') {
+                this.setData({
+                    country_code: CONST.DATA.DEAFULT_COUNTRY_CODE
+                });
+            }
+        },
+        /***  init verification label ***/
+        initDefalutVerificationCodeLabel: function () {
+            if (this.data.validation_label == '') {
+                this.setData({
+                    validation_label: CONST.DATA.DEFAULT_GET_PHONE_VALIDATION_LABEL_
+                });
+            }
+        },
+        /*** comonent inner eventHandle function ***/
+        valueInput: function (e) {
+            this.setValue(e.detail.value);
+            this.valueInputListener();
+        },
+        clearValue: function () {
+            this.setValue('');
+        },
+        refreshErrorReminder: function () {
+            let isHide = this.verifyValue();
+            if (isHide) {
+                this.setErrorReminder('');
+            } else {
+                if (this.data.reminder == '') {
+                    this.setErrorReminder(this.data.types[this.data.type].errorMessage);
+                } else {
+                    this.setErrorReminder(this.data.reminder);
+                }
+            }
+        },
+        /*** common feature ***/
+        verifyValue: function () {
+            if (this.data.type == TYPE_TEL) {
+                return this.data.types[this.data.type].verifyFuc(this.data.value, this.data.country_code);
+            } else {
+                return this.data.types[this.data.type].verifyFuc(this.data.value);
+            }
+        },
         listener: function (str, result) {
             var eventDetail = {};
             var eventOption = {};
             eventDetail.pgyerResult = result;
             this.triggerEvent(str, eventDetail, eventOption);
         },
-        refreshErrorReminder: function () {
-            let isHide = this.verifyValue();
-            if (isHide) {
-                this.setData({
-                    errorReminder: ''
-                });
-            } else {
-                this.setData({
-                    errorReminder: this.data.types[this.data.type].errorMessage
-                });
-            }
+        setValue: function (str) {
+            this.setData({
+                value: str
+            });
         },
-        /*** callingCode feature ***/
-        initDefaultCountryCode: function () {
-            if (this.data.countrycode == '') {
-                this.setData({
-                    countrycode: CONST.DATA.DEAFULT_COUNTRY_CODE
-                });
-            }
+        setErrorReminder: function (str) {
+            this.setData({
+                reminder: str
+            });
         },
-        pickCallingCodeListener: function () {
-            this.listener('tapcallingcode', '');
-        },
+
         /*** get phone verification feature **/
-        initDefalutPhoneVerificationLabel: function () {
-            if (this.data.validationlabel == '') {
-                this.setData({
-                    validationlabel: CONST.DATA.DEFAULT_GET_PHONE_VALIDATION_LABEL_
-                });
-            }
-        },
-        phoneVerificationListener: function () {
+        tapVerificationLabel: function () {
             if (!this.data.active) {
                 return;
             }
             this.startCountDown();
-            this.listener('tapphoneverification', '');
+            this.tapVerificationLabelListener();
         },
+
         startCountDown: function () {
             let that = this;
-            var countDownNum = parseInt(this.data.countdown);
+            var countDownNum = parseInt(this.data.count_down);
             this.setData({
                 active: false,
-                validationlabel: countDownNum + "s"
+                validation_label: countDownNum + "s"
             });
             this.data.timer = setInterval(function () {
                 countDownNum--;
                 that.setData({
-                    validationlabel: countDownNum + "s"
+                    validation_label: countDownNum + "s"
                 });
                 if (countDownNum == 0) {
                     that.stopCuntDown();
@@ -190,9 +203,24 @@ Component({
         stopCuntDown: function () {
             clearInterval(this.data.timer);
             this.setData({
-                validationlabel: CONST.DATA.DEFAULT_REGET_PHONE_VALIDATION_LABEL,
+                validation_label: CONST.DATA.DEFAULT_REGET_PHONE_VALIDATION_LABEL,
                 active: true,
             });
+        },
+
+        /*** exports eventHandle ***/
+        confirm: function (e) {
+            this.listener('confirm', e);
+        },
+        valueInputListener: function () {
+            let isLegal = this.verifyValue();
+            this.listener("verify_event", isLegal);
+        },
+        tapCountryCodeListener: function () {
+            this.listener('country_code', '');
+        },
+        tapVerificationLabelListener: function () {
+            this.listener('verification_label', '');
         },
     }
 });
