@@ -49,9 +49,6 @@ Component({
       value: 'done',
     }
   },
-  /**
-   * 组件的初始数据
-   */
   data: {
     timer: {},
     types: {
@@ -82,9 +79,7 @@ Component({
     this.initDefaultType();
     this.initView();
   },
-  /**
-   * 组件的方法列表
-   */
+  
   methods: {
     /*** init ***/
     initView: function() {
@@ -114,6 +109,7 @@ Component({
         })
       }
     },
+
     /*** init country Code ***/
     initDefaultCountryCode: function() {
       if (this.data.country_code == '') {
@@ -122,6 +118,7 @@ Component({
         });
       }
     },
+
     /***  init verification label ***/
     initDefalutVerificationCodeLabel: function() {
       if (this.data.validation_label == '') {
@@ -130,6 +127,7 @@ Component({
         });
       }
     },
+
     /*** comonent inner eventHandle function ***/
     valueInput: function(e) {
       this.setValue(e.detail.value);
@@ -150,6 +148,7 @@ Component({
         }
       }
     },
+
     /*** common feature ***/
     verifyValue: function() {
       if (this.data.type == TYPE_TEL) {
@@ -177,13 +176,12 @@ Component({
 
     /*** get phone verification feature **/
     tapVerificationLabel: function() {
-      if (!this.data.active==='false') {
+      if (!this.data.active === 'false') {
         return;
       }
       this.startCountDown();
       this.tapVerificationLabelListener();
     },
-
     startCountDown: function() {
       let that = this;
       var countDownNum = parseInt(this.data.count_down);
