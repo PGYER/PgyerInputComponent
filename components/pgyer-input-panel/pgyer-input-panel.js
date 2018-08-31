@@ -81,6 +81,7 @@ Component({
     methods: {
         /*** common feature ***/
         initView: function () {
+            this.initDefaultType();
             this.initDefaultPlaceHolder();
 
             switch (this.data.type) {
@@ -114,6 +115,13 @@ Component({
                 return this.data.types[this.data.type].verifyFuc(this.data.value, this.data.countrycode);
             } else {
                 return this.data.types[this.data.type].verifyFuc(this.data.value);
+            }
+        },
+        initDefaultType : function(){
+            if(this.data.type===''){
+                this.setData({
+                    type : TYPE_TEL_OR_EMAIL
+                });
             }
         },
         initDefaultPlaceHolder: function () {
