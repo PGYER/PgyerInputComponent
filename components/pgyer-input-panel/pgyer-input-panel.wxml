@@ -1,7 +1,7 @@
 <!--component/pgyer-input-panel.wxml-->
 <view class="pgyer-cell weui-flex">
   <block wx:if="{{type == 'tel'}}">
-    <view class="pgyer-input-picker " bindtap="pickCallingCodeListener">+{{countrycode}}</view>
+    <view class="pgyer-input-picker " bindtap="tapCountryCodeListener">+{{country_code}}</view>
     <image class="picker-icon" src="../../image/calling_icon.png"/>
     <view class="before-distant"/>
   </block>
@@ -9,17 +9,19 @@
     class="pgyer-input  weui-flex__item"
     bindblur="refreshErrorReminder"
     bindinput="valueInput"
+    bindconfirm="confirm"
     placeholder="{{placeHolder}}"
     placeholder-class="pgyer-input-placeholder"
     value="{{value}}"
     type="{{type=='tel'||type=='verificationCode' ? 'number':'text'}}"
-    password="{{type==='password'?true:false}}"/>
+    password="{{type==='password'?true:false}}"
+    confirm-type="{{confirm_type}}"/>
 
   <view wx:if="{{value.length >0}}" bindtap="clearValue">
     <image class="pgyer_clear_icon " src="../../image/clear.png"/>
   </view>
   <block wx:if="{{type == 'verificationCode'}}">
-    <view class="{{active? 'pgyer-input-label' : 'pgyer-input-label-disabled'}}" bindtap="phoneVerificationListener">{{validationlabel}}</view>
+    <view class="{{active? 'pgyer-input-label' : 'pgyer-input-label-disabled'}}" bindtap="tapVerificationLabel">{{validation_label}}</view>
   </block>
 </view>
-<view class="error" wx:if="{{content.length >0}}">{{errorReminder}}</view>
+<view class="error" wx:if="{{value.length >0}}">{{reminder}}</view>
