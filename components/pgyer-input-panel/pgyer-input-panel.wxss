@@ -19,8 +19,6 @@
   border-radius: 10rpx;
   display: flex;
   align-items:center;
-  /* padding-left: 32rpx;
-  padding-right: 32rpx; */
   font-size: 18px;
   text-align: center;
   margin: 16rpx 0 8rpx 0;
@@ -52,8 +50,10 @@
   color: #babdc6;
   text-align: right;
   margin-right: 32rpx;
-
 }
+.pgyer-input-placeholder{
+  color:#babdc6;
+   line-height: 1em;}
 .pgyer-input{
   text-align:left;
   padding-left: 32rpx;
@@ -70,6 +70,8 @@
 }
 .error{
   color: #e64304;
-  /* margin: 8rpx 0 16rpx 0; */
   font-size: 12px
+}
+.before-distant{
+  width: 32rpx;
 }

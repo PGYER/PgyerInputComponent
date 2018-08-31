@@ -4,12 +4,16 @@ var CONST = require('../../const/pgyerInputConsts.js');
 
 const TYPE_TEL = 'tel';
 const TYPE_TEL_OR_EMAIL = 'telOrEmail';
-const TYPE_PHONE_VALIFICATION = 'phoneValification';
+const TYPE_PHONE_VALIFICATION = 'verificationCode';
 const TYPE_PASSWORD = 'password';
 
 Component({
     properties: {
         /*** common properties ***/
+        value: {
+            type: String,
+            value: '',
+        },
         type: {
             type: String,
             value: '',
@@ -17,10 +21,6 @@ Component({
         placeholder: {
             type: String,
             value: ''
-        },
-        content: {
-            type: String,
-            value: '',
         },
         /*** tel properties ***/
         countrycode: {
@@ -59,7 +59,7 @@ Component({
                 'errorMessage': '输入的邮箱或者手机号码有误',
                 'verifyFuc': verifyUtils.verifyPhoneOrEmail
             },
-            'phoneValification': {
+            'verificationCode': {
                 'placeHolder': '请输入验证码',
                 'errorMessage': '输入的验证码有误',
                 'verifyFuc': verifyUtils.verifyPhoneValificaiton
@@ -99,7 +99,7 @@ Component({
         },
         setContent: function (str) {
             this.setData({
-                content: str
+                value: str
             });
         },
         clearContent: function () {
@@ -111,9 +111,9 @@ Component({
         },
         verifyContent: function () {
             if (this.data.type == TYPE_TEL) {
-                return this.data.types[this.data.type].verifyFuc(this.data.content, this.data.countrycode);
+                return this.data.types[this.data.type].verifyFuc(this.data.value, this.data.countrycode);
             } else {
-                return this.data.types[this.data.type].verifyFuc(this.data.content);
+                return this.data.types[this.data.type].verifyFuc(this.data.value);
             }
         },
         initDefaultPlaceHolder: function () {

@@ -1,6 +1,5 @@
 <!--pages/test/test.wxml-->
-<pgyer-input-panel content="12345" type="tel" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode"></pgyer-input-panel>
-<pgyer-input-panel id="input" content="12345" type="phoneValification" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" active="true" phoneverificationlabel="" bindtapphoneverification="getPhoneVerification2"></pgyer-input-panel>
-<pgyer-input-panel content="12345" type="phoneValification" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" active="true" verificationLabel="122" countdown="5" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>
-<pgyer-input-panel content="12345" type="password" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" phoneverificationlabel="" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>
-<pgyer-input-panel content="12345" type="telOrEmail" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" phoneverificationlabel="" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>
+<pgyer-input-panel value="12345" type="tel" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode"></pgyer-input-panel>
+<pgyer-input-panel value="12345" type="verificationCode" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" active="true" verificationLabel="122" countdown="5" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>
+<pgyer-input-panel value="12345" type="password" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" phoneverificationlabel="" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>
+<pgyer-input-panel value="12345" type="telOrEmail" bindverifyevent="isPhone" bindtapcallingcode="pickCallingCode" phoneverificationlabel="" bindtapphoneverification="getPhoneVerification"></pgyer-input-panel>

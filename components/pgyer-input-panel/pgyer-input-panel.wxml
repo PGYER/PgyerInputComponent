@@ -3,7 +3,7 @@
   <block wx:if="{{type == 'tel'}}">
     <view class="pgyer-input-picker " bindtap="pickCallingCodeListener">+{{countrycode}}</view>
     <image class="picker-icon" src="../../image/calling_icon.png"/>
-    <view style="width:32rpx"/>
+    <view class="before-distant"/>
   </block>
   <input
     class="pgyer-input  weui-flex__item"
@@ -11,14 +11,13 @@
     bindinput="contentInput"
     placeholder="{{placeHolder}}"
     placeholder-class="pgyer-input-placeholder"
-    type="{{contentType}}"
-    value="{{content}}"
+    value="{{value}}"
     password="{{type==='password'?true:false}}"/>
 
-  <view wx:if="{{content.length >0}}" bindtap="clearContent">
+  <view wx:if="{{value.length >0}}" bindtap="clearContent">
     <image class="pgyer_clear_icon " src="../../image/clear.png"/>
   </view>
-  <block wx:if="{{type == 'phoneValification'}}">
+  <block wx:if="{{type == 'verificationCode'}}">
     <view class="{{active? 'pgyer-input-label' : 'pgyer-input-label-disabled'}}" bindtap="phoneVerificationListener">{{validationlabel}}</view>
   </block>
 </view>
