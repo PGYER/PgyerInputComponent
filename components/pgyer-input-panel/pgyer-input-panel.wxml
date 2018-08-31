@@ -12,6 +12,7 @@
     placeholder="{{placeHolder}}"
     placeholder-class="pgyer-input-placeholder"
     value="{{value}}"
+    type="{{type=='tel'||type=='verificationCode' ? 'number':'text'}}"
     password="{{type==='password'?true:false}}"/>
 
   <view wx:if="{{value.length >0}}" bindtap="clearContent">
