@@ -109,7 +109,7 @@ Component({
         initDefaultPlaceHolder: function () {
             if (this.data.placeholder == '') {
                 this.setData({
-                    placeHolder: this.data.types[this.data.type].placeHolder
+                    placeholder: this.data.types[this.data.type].placeHolder
                 })
             }
         },

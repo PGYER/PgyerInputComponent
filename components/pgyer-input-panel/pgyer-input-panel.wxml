@@ -10,7 +10,7 @@
     bindblur="refreshErrorReminder"
     bindinput="valueInput"
     bindconfirm="confirm"
-    placeholder="{{placeHolder}}"
+    placeholder="{{placeholder}}"
     placeholder-class="pgyer-input-placeholder"
     value="{{value}}"
     type="{{type=='tel'||type=='verificationCode' ? 'number':'text'}}"
