@@ -73,6 +73,7 @@ Component({
         'verifyFuc': verifyUtils.verifyPassword
       }
     },
+    fixedUI: false,
   },
 
   ready: function() {
@@ -216,7 +217,7 @@ Component({
       let isLegal = this.verifyValue();
       let data = {};
       data.value = e.detail.value;
-      data.isLegal =isLegal;
+      data.isLegal = isLegal;
       this.listener("input_verify", data);
     },
     tapCountryCodeListener: function() {
@@ -225,5 +226,11 @@ Component({
     tapVerificationLabelListener: function() {
       this.listener('verification_label', '');
     },
+    /*** this is fixed wechat mini program placeholder on ios bug must refresh css **/
+    fixedUI: function() {
+      this.setData({
+        fixedUI: true
+      })
+    }
   }
 });
