@@ -135,6 +135,7 @@ Component({
     },
     clearValue: function() {
       this.setValue('');
+      this.listener('clear', '');
     },
     refreshErrorReminder: function() {
       let isHide = this.verifyValue();
