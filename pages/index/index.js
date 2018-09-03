@@ -15,10 +15,22 @@ Page({
       email : e.detail.pgyerResult.value
     })
   },
+  clearEmail : function(e){
+    console.log("this is clear value must make sure page's data can synchronized", e.detail.pgyerResult);
+    this.setData({
+      email : ''
+    })
+  },
   inputPhone: function(e) {
     console.log("this is phone", e.detail.pgyerResult);
     this.setData({
       tel : e.detail.pgyerResult.value
+    })
+  },
+  clearPhone : function(e){
+    console.log("this is clear value must make sure page's data can synchronized", e.detail.pgyerResult);
+    this.setData({
+      tel : ''
     })
   },
   inputVerificationCode: function(e) {
@@ -27,10 +39,22 @@ Page({
       verificationCode : e.detail.pgyerResult.value
     })
   },
+  clearVerification : function(e){
+    console.log("this is clear value must make sure page's data can synchronized", e.detail.pgyerResult);
+    this.setData({
+      verificationCode : ''
+    })
+  },
   inputPassword: function(e) {
     console.log("this is password", e.detail.pgyerResult);
     this.setData({
       password : e.detail.pgyerResult.value
+    })
+  },
+  clearPassword : function(e){
+    console.log("this is clear value must make sure page's data can synchronized", e.detail.pgyerResult);
+    this.setData({
+      password : ''
     })
   },
   confirm: function(e) {

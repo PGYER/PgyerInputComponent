@@ -1,9 +1,9 @@
 <!--pages/test/test.wxml-->
 <pgyer-input-panel value="" placeholder="自定义的PlaceHolder" reminder="这个默认type='telOrEmail' 错误自定义提示" confirm_type="next" bindconfirm="confirm"></pgyer-input-panel>
-<pgyer-input-panel value="{{email}}" type="telOrEmail" bindinput_verify="inputEmailOrTel"></pgyer-input-panel>
+<pgyer-input-panel value="{{email}}" type="telOrEmail" bindinput_verify="inputEmailOrTel" bindclear="clearEmail"></pgyer-input-panel>
 <pgyer-input-panel value="{{tel}}" type="tel" country_code="1"></pgyer-input-panel>
-<pgyer-input-panel value="{{tel}}" type="tel" bindinput_verify="inputPhone" bindcountry_code="pickCountryCode"></pgyer-input-panel>
+<pgyer-input-panel value="{{tel}}" type="tel" bindinput_verify="inputPhone" bindcountry_code="pickCountryCode" bindclear="clearPhone"></pgyer-input-panel>
 <pgyer-input-panel value="{{verificaitonCode}}" type="verificationCode" active="false"></pgyer-input-panel>
-<pgyer-input-panel value="{{verificaitonCode}}" type="verificationCode" active="true" count_down="5" bindinput_verify="inputVerificationCode" bindverification_label="clickVerificationLabel"></pgyer-input-panel>
+<pgyer-input-panel value="{{verificaitonCode}}" type="verificationCode" active="true" count_down="5" bindinput_verify="inputVerificationCode" bindverification_label="clickVerificationLabel" bindclear="clearVerification"></pgyer-input-panel>
 <pgyer-input-panel id="component-id" value="5秒中后终止倒计时" type="verificationCode" active="true" bindverification_label="cancelCountDownAfterClick"></pgyer-input-panel>
-<pgyer-input-panel value="{{password}}" type="password" bindinput_verify="inputPassword"></pgyer-input-panel>
+<pgyer-input-panel value="{{password}}" type="password" bindinput_verify="inputPassword" bindclear="clearPassword"></pgyer-input-panel>
