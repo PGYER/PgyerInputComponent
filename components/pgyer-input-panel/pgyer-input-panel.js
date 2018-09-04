@@ -136,6 +136,7 @@ Component({
     },
     clearValue: function() {
       this.setValue('');
+      this.setErrorReminder('');
       this.listener('clear', '');
     },
     refreshErrorReminder: function() {
