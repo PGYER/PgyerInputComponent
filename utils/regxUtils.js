@@ -13,7 +13,7 @@ function isPassword(string){
   return /.{6,}/.test(string);
 }
 function isGlobalNum(string){
-  return /.{5,}/.test(string);
+  return /^\d{5,}$/.test(string);
 }
 module.exports = {
   isTel : isTel,
