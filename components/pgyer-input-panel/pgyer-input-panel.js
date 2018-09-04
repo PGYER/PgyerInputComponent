@@ -179,7 +179,7 @@ Component({
 
     /*** get phone verification feature **/
     tapVerificationLabel: function() {
-      if (!this.data.active === 'false') {
+      if (this.data.active === 'false') {
         return;
       }
       this.startCountDown();
